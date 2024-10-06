@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: 'src/sdk.tsx',
+      entry: 'src/main.tsx',
       name: 'PaymentSDK',
       fileName: (format) => `payment-sdk.${format}.js`,
     },

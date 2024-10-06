@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import postRobot from 'post-robot';
 
-interface Config {
+export interface Config {
   merchantId: string;
   apiKey: string;
 }
@@ -16,7 +16,7 @@ interface PaymentResult {
   error?: string;
 }
 
-const PaymentForm: React.FC<PaymentFormProps> = ({ config }) => {
+const PaymentForm: React.FC<PaymentFormProps> = ({ config }: PaymentFormProps) => {
   const [amount, setAmount] = useState<string>('');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
