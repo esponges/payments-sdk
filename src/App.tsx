@@ -1,63 +1,73 @@
-import React, { FormEvent, useState } from 'react';
-import postRobot from 'post-robot';
+import React, { useState, FormEvent, useEffect, useCallback } from 'react';
 
 export interface Config {
   merchantId: string;
   apiKey: string;
 }
 
-interface PaymentFormProps {
-  config: Config;
-}
-
-interface PaymentResult {
+export interface PaymentResult {
   success: boolean;
   transactionId?: string;
   error?: string;
 }
 
-const PaymentForm: React.FC<PaymentFormProps> = ({ config }: PaymentFormProps) => {
-  const [amount, setAmount] = useState<string>('');
-  console.log({ config });
+interface PaymentFormProps {
+  config: Config;
+  onSuccess?: (result: PaymentResult) => void;
+  onError?: (error: Error) => void;
+  setSubmitFunction: (fn: () => Promise<void>) => void;
+}
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, setSubmitFunction }) => {
+  const [amount, setAmount] = useState<string>('');
+
+  const handleSubmit = useCallback(async () => {
+    console.log('handleSubmit');
     try {
       // Simulate API call to downstream service
+
       // const response = await fetch('https://api.example.com/authenticate', {
       //   method: 'POST',
       //   body: JSON.stringify({ amount, ...config }),
       //   headers: { 'Content-Type': 'application/json' },
       // });
       // const result: PaymentResult = await response.json();
-      const promise: Promise<PaymentResult> = new Promise((resolve) => {
+      const fakeResponse = await new Promise((resolve) => {
         setTimeout(() => {
-          resolve({ success: true, transactionId: '123456' });
-        }, 1000);
+          resolve({
+            success: true,
+            transactionId: '1234567890',
+          });
+        }, 1500);
       });
-      const result = await promise;
-      console.log({ result }); 
-
-      // Notify parent frame
-      postRobot.send(window.parent, 'payment-result', result);
+      const result: PaymentResult = await fakeResponse as PaymentResult;
+      
+      // Call onSuccess callback
+      if (onSuccess) {
+        onSuccess(result);
+      }
     } catch (error) {
       console.error('Error:', error);
-      postRobot.send(window.parent, 'payment-error', {
-        message: (error as Error).message,
-      });
+      // Call onError callback
+      if (onError && error instanceof Error) {
+        onError(error);
+      }
     }
-  };
+  }, [amount, config, onSuccess, onError]);
+
+  useEffect(() => {
+    setSubmitFunction(handleSubmit);
+  }, [amount, config, onSuccess, onError, handleSubmit, setSubmitFunction]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e: FormEvent) => e.preventDefault()}>
       <input
-        type='number'
+        type="number"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        placeholder='Enter amount'
+        placeholder="Enter amount"
         required
       />
-      <button type='submit'>Pay</button>
     </form>
   );
 };
