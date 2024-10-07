@@ -18,6 +18,7 @@ interface PaymentResult {
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ config }: PaymentFormProps) => {
   const [amount, setAmount] = useState<string>('');
+  console.log({ config });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -11,11 +11,12 @@ export default defineConfig({
       fileName: (format) => `payment-sdk.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      // We're no longer treating React as external
+      external: [],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          // This is no longer needed, but we'll keep it for now
+          PaymentSDK: 'PaymentSDK',
         },
       },
     },

@@ -13,10 +13,10 @@ function initSDK(container: HTMLElement, config: Config): void {
 }
 
 // for local testing
-initSDK(document.getElementById('root')!, {
-  merchantId: 'demo-merchant',
-  apiKey: 'demo-api-key'
-});
+// initSDK(document.getElementById('root')!, {
+//   merchantId: 'demo-merchant',
+//   apiKey: 'demo-api-key'
+// });
 
 // Export the initSDK function as a named export
 export { initSDK };
