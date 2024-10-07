@@ -23,12 +23,19 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ config }: PaymentFormProps) =
     e.preventDefault();
     try {
       // Simulate API call to downstream service
-      const response = await fetch('https://api.example.com/authenticate', {
-        method: 'POST',
-        body: JSON.stringify({ amount, ...config }),
-        headers: { 'Content-Type': 'application/json' },
+      // const response = await fetch('https://api.example.com/authenticate', {
+      //   method: 'POST',
+      //   body: JSON.stringify({ amount, ...config }),
+      //   headers: { 'Content-Type': 'application/json' },
+      // });
+      // const result: PaymentResult = await response.json();
+      const promise: Promise<PaymentResult> = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ success: true, transactionId: '123456' });
+        }, 1000);
       });
-      const result: PaymentResult = await response.json();
+      const result = await promise;
+      console.log({ result }); 
 
       // Notify parent frame
       postRobot.send(window.parent, 'payment-result', result);
