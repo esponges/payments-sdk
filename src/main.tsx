@@ -41,9 +41,3 @@ function initSDK(container: HTMLElement, config: SDKConfig): SDK {
 
 export { initSDK };
 export default { initSDK };
-
-// for local testing
-// initSDK(document.getElementById('root')!, {
-//   merchantId: 'demo-merchant',
-//   apiKey: 'demo-api-key'
-// });
