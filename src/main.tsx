@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import PaymentForm, { Config, PaymentResult } from './App';
+import PaymentForm, { Config, PaymentResult } from './Form';
 import './index.css';
 
 interface SDKConfig extends Config {
