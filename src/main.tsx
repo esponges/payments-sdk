@@ -24,6 +24,7 @@ function initSDK(container: HTMLElement, config: SDKConfig): SDK {
         config={config} 
         onSuccess={config.onSuccess}
         onError={config.onError}
+        // allow child to set submit function
         setSubmitFunction={(fn) => {
           submitFunction = fn;
         }}

@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "serve": "npx tsx server/app.ts",
+    "serve": "npm run build && npx tsx server/app.ts",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "watch": "vite build --watch"
   },
   "dependencies": {
     "express": "^4.21.0",

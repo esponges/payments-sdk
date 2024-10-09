@@ -53,11 +53,11 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, s
         onError(error);
       }
     }
-  }, [amount, config, onSuccess, onError]);
+  }, [/* amount, config,  */onSuccess, onError]);
 
   useEffect(() => {
     setSubmitFunction(handleSubmit);
-  }, [amount, config, onSuccess, onError, handleSubmit, setSubmitFunction]);
+  }, [config, onSuccess, onError, handleSubmit, setSubmitFunction]);
 
   return (
     <form onSubmit={(e: FormEvent) => e.preventDefault()}>
