@@ -10,7 +10,8 @@
     "serve:dev": "npx tsx --watch server/app.ts",
     "lint": "eslint .",
     "preview": "vite preview",
-    "watch": "vite build --watch"
+    "watch": "vite build --watch",
+    "vite": "vite"
   },
   "dependencies": {
     "express": "^4.21.0",
