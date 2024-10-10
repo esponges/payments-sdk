@@ -1,7 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import PaymentForm, { Config, PaymentResult } from './Form';
-import './index.css';
+
+import App from './App';
+
+import type { Config, PaymentResult } from './Form';
+
+import './styles/main.scss';
 
 interface SDKConfig extends Config {
   onSuccess?: (result: PaymentResult) => void;
@@ -20,7 +24,7 @@ function initSDK(container: HTMLElement, config: SDKConfig): SDK {
   const root = createRoot(container);
   root.render(
     <StrictMode>
-      <PaymentForm 
+      <App 
         config={config} 
         onSuccess={config.onSuccess}
         onError={config.onError}
@@ -42,6 +46,7 @@ function initSDK(container: HTMLElement, config: SDKConfig): SDK {
 export { initSDK };
 export default { initSDK };
 
+// uncomment to run locally with `npm run vite`
 // initSDK(document.getElementById('root')!, {
 //   merchantId: '123',
 //   apiKey: '456',
