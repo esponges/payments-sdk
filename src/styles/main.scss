@@ -2,8 +2,38 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
+}
 
-  // debug styles
-  border: 1px solid red;
-  background-color: #f0f0f0;
+.payment-form {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+  }
+}
+
+// You may need to adjust the selector if your form has a specific class or ID
+form {
+  // max-width: 500px;
+  margin: 0 auto;
 }

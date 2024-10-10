@@ -60,7 +60,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, s
   }, [config, onSuccess, onError, handleSubmit, setSubmitFunction]);
 
   return (
-    <form onSubmit={(e: FormEvent) => e.preventDefault()}>
+    <form onSubmit={(e: FormEvent) => e.preventDefault()} className="payment-form">
       <input
         type="number"
         value={amount}
