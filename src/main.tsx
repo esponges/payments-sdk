@@ -43,6 +43,7 @@ function initSDK(container: HTMLElement, config: SDKConfig): SDK {
   };
 }
 
+export type { Config, PaymentResult } from './Form';
 export { initSDK };
 export default { initSDK };
 
