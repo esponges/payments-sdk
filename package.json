@@ -3,12 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/payment-sdk.umd.js",
-  "module": "./dist/payment-sdk.es.js",
-  "types": "./dist/main.d.ts",
-  "files": [
-    "/dist"
-  ],
   "scripts": {
     "dev": "concurrently \"npm run watch\" \"npm run serve:dev\"",
     "build": "tsc -b && vite build",

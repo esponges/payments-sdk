@@ -18,12 +18,6 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* typescript declaration */
-    // "emitDeclarationOnly": true,
-    // "declaration": true,
-    // "outDir": "./dist"
   },
   "include": ["src", "src/**/*"]
 }
