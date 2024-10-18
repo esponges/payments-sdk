@@ -26,6 +26,8 @@ export default defineConfig({
         },
       },
     },
+    watch: {},
+    minify: false,
   },
   resolve: {
     alias: {
