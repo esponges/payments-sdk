@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
+app.get('/zoid', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client', 'index-zoid.html'));
+});
+
 // Serve the UMD bundle
 app.get('/payment-sdk.umd.js', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'payment-sdk.umd.js'));
