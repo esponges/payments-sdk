@@ -1,5 +1,11 @@
 import { create } from 'zoid/dist/zoid.frameworks';
 
+/* 
+  This would be the SDK bridge component
+  This is the shared component that will be used to render the payment form.
+  Should be imported by the parent and the child.
+*/
+
 const PaymentSDK = create({
   tag: 'payment-sdk',
   url: '/index.html', // This will be the URL of your built React app
