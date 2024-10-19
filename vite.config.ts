@@ -10,19 +10,22 @@ export default defineConfig({
     [dts({ tsconfigPath: './tsconfig.app.json' })],
   ],
   build: {
-    lib: {
-      entry: path.resolve(__dirname, 'src/main.tsx'),
-      name: 'PaymentSDK',
-      fileName: (format) => `payment-sdk.${format}.js`,
-      formats: ['es', 'umd'],
-    },
+    // TODO: uncomment this when we want to build the SDK as a library
+    // lib: {
+    //   entry: path.resolve(__dirname, 'src/main.tsx'),
+    //   name: 'PaymentSDK',
+    //   fileName: (format) => `payment-sdk.${format}.js`,
+    //   formats: ['es', 'umd'],
+    // },
+    outDir: 'dist',
     rollupOptions: {
-      // We're no longer treating React as external
-      external: [],
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        zoidComponent: path.resolve(__dirname, 'src/zoid-component.ts'),
+      },
       output: {
-        globals: {
-          // This is no longer needed, but we'll keep it for now
-          PaymentSDK: 'PaymentSDK',
+        entryFileNames: (chunkInfo) => {
+          return chunkInfo.name === 'zoidComponent' ? 'zoid-component.js' : '[name].[hash].js';
         },
       },
     },

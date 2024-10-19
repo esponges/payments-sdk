@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment SDK Container</title>
+    <script src="https://unpkg.com/post-robot/dist/post-robot.js"></script>
+    <script src="/sdk/payment-sdk.umd.js"></script>
+    <link rel="stylesheet" href="/sdk/style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <button id="submit-button">Submit Payment</button>
+    <script>
+      const config = {
+        merchantId: 'demo-merchant',
+        apiKey: 'demo-api-key',
+        onSuccess: function (result) {
+          console.log('Payment successful:', result);
+          alert('Payment successful! Transaction ID: ' + result.transactionId);
+        },
+        onError: function (error) {
+          console.error('Payment error:', error);
+          alert('Payment failed: ' + error.message);
+        },
+      };
+
+      const sdk = PaymentSDK.default.initSDK(
+        document.getElementById('root'),
+        config
+      );
+
+      document
+        .getElementById('submit-button')
+        .addEventListener('click', function () {
+          sdk.submit();
+        });
+    </script>
+  </body>
+</html>

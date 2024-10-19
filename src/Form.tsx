@@ -15,7 +15,7 @@ export interface PaymentFormProps {
   config: Config;
   onSuccess?: (result: PaymentResult) => void;
   onError?: (error: Error) => void;
-  setSubmitFunction: (fn: () => Promise<void>) => void;
+  setSubmitFunction?: (fn: () => Promise<void>) => void;
 }
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, setSubmitFunction }) => {
@@ -56,7 +56,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, s
   }, [/* amount, config,  */onSuccess, onError]);
 
   useEffect(() => {
-    setSubmitFunction(handleSubmit);
+    setSubmitFunction?.(handleSubmit);
   }, [config, onSuccess, onError, handleSubmit, setSubmitFunction]);
 
   return (
