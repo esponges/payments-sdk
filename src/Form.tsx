@@ -1,4 +1,5 @@
 import React, { useState, FormEvent, useEffect, useCallback } from 'react';
+import postRobot from 'post-robot';
 
 export interface Config {
   merchantId: string;
@@ -54,6 +55,19 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ config, onSuccess, onError, s
       }
     }
   }, [/* amount, config,  */onSuccess, onError]);
+
+  // TODO: Figure out how this affects the `zoid-component` and breaks
+  // the app. Gotta think how to listen to parent events without postRobot
+  useEffect(() => {
+    // const submit = postRobot.on('submit', async (evt) => {
+    //   console.log('submitting via parent click', { evt });
+    //   // handleSubmit();
+    // });
+
+    // return () => {
+    //   submit.cancel();
+    // }
+  }, []);
 
   useEffect(() => {
     setSubmitFunction?.(handleSubmit);

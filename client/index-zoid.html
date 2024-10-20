@@ -6,6 +6,7 @@
     <title>Payment SDK Demo</title>
     <script src="https://unpkg.com/zoid/dist/zoid.frameworks.js"></script>
     <script src="/zoid-component.js"></script>
+    <script src="https://unpkg.com/post-robot/post-robot.min.js"></script>
     <!-- <script src="/sdk/payment-sdk.umd.js"></script>
     <link rel="stylesheet" href="/sdk/style.css" /> -->
   </head>
@@ -37,18 +38,19 @@
         onError: onError,
       }).render('#payment-container');
 
-      // document
-      //   .getElementById('submit-button')
-      //   .addEventListener('click', function () {
-      //     sdk.submit();
-      //   });
+      function sendViaPostRobot(args, event) {
+        let iframeName = [...document.getElementsByTagName('iframe')].find(
+          (elementInIframesArray) =>
+            elementInIframesArray.name?.includes('zoid__payment-sdk')
+        ).name;
+        postRobot.send(window.frames[iframeName], event, args);
+      }
 
-      // document
-      //   .getElementById('send-auth-button')
-      //   .addEventListener('click', function () {
-      //     const authData = { token: 'example-auth-token' };
-      //     sdk.sendAuth(authData);
-      //   });
+      document
+        .getElementById('submit-button')
+        .addEventListener('click', function () {
+          sendViaPostRobot({}, 'submit');
+        });
     </script>
   </body>
 </html>

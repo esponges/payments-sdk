@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-// import the sdk to bridge the parent and child
+// import the sdk to br
 import './zoid-component';
 
 import App from './App';

@@ -37,7 +37,7 @@ app.get('/zoid', (req, res) => {
   res.sendFile(path.join(__dirname, '../client', 'index-zoid.html'));
 });
 
-app.get('/sdk.js', (req, res) => {
+app.get('/sdk', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'zoid-component.js'));
 });
 
