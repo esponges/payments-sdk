@@ -32,7 +32,7 @@
         alert('Payment failed: ' + error.message);
       };
 
-      const sdk = PaymentSDK({
+      window.PaymentSDK({
         config: config,
         onSuccess: onSuccess,
         onError: onError,

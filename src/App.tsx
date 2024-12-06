@@ -47,7 +47,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = ({ config }) => {
-  console.log({ config, props: window.xprops });
+  console.log({ config, xprops: window.xprops });
   const handleSuccess = (result: PaymentResult) => {
     window.xprops?.onSuccess?.(result);
   };

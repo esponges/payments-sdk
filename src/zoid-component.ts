@@ -1,7 +1,7 @@
 import { create } from 'zoid/dist/zoid.frameworks';
 
 /* 
-  This would be the SDK bridge component
+  This would be the SDK bridge external dependency
   This is the shared component that will be used to render the payment form.
   Should be imported by the parent and the child.
 */
@@ -278,5 +278,3 @@ const PaymentSDK = create({
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).PaymentSDK = PaymentSDK;
-
-export default PaymentSDK;
