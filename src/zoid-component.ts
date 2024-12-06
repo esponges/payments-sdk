@@ -210,7 +210,7 @@ const loadingSpinnerCSS = `
   }
 `
 
-export const createLoadingSpinner = (doc) => {
+export const createLoadingSpinner = (doc: Document) => {
     const html = doc.createElement("html");
     const body = doc.createElement("body");
     const style = doc.createElement("style");
@@ -248,7 +248,7 @@ const PaymentSDK = create({
     height: '300px',
   },
 
-  prerenderTemplate: ({ doc }) => {
+  prerenderTemplate: ({ doc }: { doc: Document }) => {
     return createLoadingSpinner(doc);
   },
 
@@ -265,6 +265,14 @@ const PaymentSDK = create({
       type: 'function',
       required: true,
     },
+    foo: {
+      type: 'string',
+      default: (props: unknown) => {
+        console.log(props);
+        return 'bar';
+      },
+      required: true,
+    }
   },
 });
 
