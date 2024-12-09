@@ -241,7 +241,7 @@ export const createLoadingSpinner = (doc: Document) => {
 
 const PaymentSDK = create({
   tag: 'payment-sdk',
-  url: '/index.html', // This will be the URL of your built React app
+  url: ({ props }) => props.url, // This will be the URL of your built React app
 
   dimensions: {
     width: '100%',
@@ -253,6 +253,10 @@ const PaymentSDK = create({
   },
 
   props: {
+    url: {
+      type: 'string',
+      required: true,
+    },
     config: {
       type: 'object',
       required: true,
@@ -265,14 +269,6 @@ const PaymentSDK = create({
       type: 'function',
       required: true,
     },
-    foo: {
-      type: 'string',
-      default: (props: unknown) => {
-        console.log(props);
-        return 'bar';
-      },
-      required: true,
-    }
   },
 });
 
